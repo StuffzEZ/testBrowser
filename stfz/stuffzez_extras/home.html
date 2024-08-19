@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    </style>
+<script type="application/javascript">
+
+    function resizeIFrameToFitContent( iFrame ) {
+    
+        iFrame.width  = iFrame.contentWindow.document.body.scrollWidth;
+        iFrame.height = iFrame.contentWindow.document.body.scrollHeight;
+    }
+    
+    window.addEventListener('DOMContentLoaded', function(e) {
+    
+        var iFrame = document.getElementById( 'iFrame1' );
+        resizeIFrameToFitContent( iFrame );
+    
+        // or, to resize all iframes:
+        var iframes = document.querySelectorAll("iframe");
+        for( var i = 0; i < iframes.length; i++) {
+            resizeIFrameToFitContent( iframes[i] );
+        }
+    } );
+    
+    </script>
+    <title>testBrowser | StuffzEZ Extras</title>
+</head>
+<body>
+    <iframe src="https://stuffzez.github.io" id="iFrame1"></iframe>
+</body>
+</html>

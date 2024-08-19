@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transform Address</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
+            background-color: rgb(37, 37, 37);
+        }
+        .container {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: rgb(0, 194, 0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="addressInput" placeholder="Enter address">
+        <button onclick="transformAddress()">Go</button>
+        <h2>Pages To Try:</h2>
+        <br>
+        <p>stuffzez.github.io: stfz://stuffzez.extras/home</p>
+    </div>
+
+    <script>
+        function transformAddress() {
+            const baseURL = window.location + "/";
+            const input = document.getElementById('addressInput').value;
+
+            // Check if input contains '://'
+            if (!input.includes('://')) {
+                resultElement.textContent = 'Invalid address format. Please include Prefix.';
+                return;
+            }
+
+            // Split the prefix and URL
+            const [prefix, urlPart] = input.split('://');
+
+            // Replace '.' with '/'
+            const transformedURL = urlPart.replace(/\./g, '_');
+
+            // Include the prefix in the final URL
+            const finalURL = baseURL + prefix + '/' + transformedURL;
+
+            // Display the result
+            window.location.replace(finalURL);
+        }
+    </script>
+</body>
+</html>
