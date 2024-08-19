@@ -1,2 +1,2 @@
 # testBrowser
-A Test Web Browser On A Website.... How?!!!? (Check README)
+A TEST Web Browser That Is Made By StuffzEZ (The Creator Of stuffzez.github.io)
