@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transform Address</title>
+    <title>testBrowser | Quickly Get To Another Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,34 +35,46 @@
     <div class="container">
         <input type="text" id="addressInput" placeholder="Enter address">
         <button onclick="transformAddress()">Go</button>
-        <h2>Pages To Try:</h2>
         <br>
-        <p>stuffzez.github.io: stfz://stuffzez.extras/home</p>
+        <p>Quick Links</p>
+        <br>
+        <a href="https://stuffzez.github.io/testBrowser/core/pagenumberindex">Page Number Index</a>
+        <br>
+        <a href="https://stuffzez.github.io/testBrowser/core/pageindex">Page Index</a>
+        <br>
+        <a href="https://stuffzez.github.io/testBrowser/core/guides/howitworks">How It Works</a>
+        <br>
+        <pre>PLEASE NOTE: This IS NOT A Search Engine - It Is Just A Way To Get To Pages Quicker</pre>
     </div>
 
     <script>
-        function transformAddress() {
-            const baseURL = window.location + "/";
-            const input = document.getElementById('addressInput').value;
+function transformAddress() {
+    const baseURL = window.location + "/";
+    let input = document.getElementById('addressInput').value.toLowerCase(); // Lowercase the input
 
-            // Check if input contains '://'
-            if (!input.includes('://')) {
-                resultElement.textContent = 'Invalid address format. Please include Prefix.';
-                return;
-            }
+    let transformedURL;
 
-            // Split the prefix and URL
-            const [prefix, urlPart] = input.split('://');
+    // Check if input contains '://'
+    if (input.includes('://')) {
+        // Split the prefix and URL
+        const [prefix, urlPart] = input.split('://');
 
-            // Replace '.' with '/'
-            const transformedURL = urlPart.replace(/\./g, '_');
+        // Replace '.' with '_'
+        transformedURL = urlPart.replace(/\./g, '_');
 
-            // Include the prefix in the final URL
-            const finalURL = baseURL + prefix + '/' + transformedURL;
+        // Include the prefix in the final URL
+        transformedURL = prefix + '/' + transformedURL;
+    } else {
+        // No '://', proceed with space and dot replacements
+        transformedURL = input.replace(/\./g, '_').replace(/\s/g, '-');
+    }
 
-            // Display the result
-            window.location.replace(finalURL);
-        }
+    // Final URL with baseURL
+    const finalURL = baseURL + transformedURL;
+
+    // Redirect to the new URL
+    window.location.replace(finalURL);
+}
     </script>
 </body>
 </html>
