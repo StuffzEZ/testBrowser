@@ -59,3 +59,7 @@ if (currentUrl == "https://stuffzez.github.io/testBrowser//100000"){
 if (currentUrl == "https://stuffzez.github.io/testBrowser//538107"){
     location.replace("https://stuffzez.github.io/testBrowser/testbrowser/aprilfools")
 }
+
+if (currentUrl == "https://stuffzez.github.io/testBrowser//"){
+    location.replace("https://stuffzez.github.io/testBrowser/testbrowser/aprilfools")
+}
